@@ -240,11 +240,11 @@ int findBestMove(char board[9])
 
 void print(int place, char element)
 {
-	cout<<"                                                     "<<arr[0]<<" | "<<arr[1] << " | "<< arr[2]<<endl;
-	cout<<"                                                     ---------"<<endl;
-	cout<<"                                                     "<<arr[3]<<" | "<<arr[4] << " | "<< arr[5]<<endl;
-	cout<<"                                                     ---------"<<endl;
-	cout<<"                                                     "<<arr[6]<<" | "<<arr[7] << " | "<< arr[8]<<endl<<endl;
+	cout<<arr[0]<<" | "<<arr[1] << " | "<< arr[2]<<endl;
+	cout<<"---------"<<endl;
+	cout<<arr[3]<<" | "<<arr[4] << " | "<< arr[5]<<endl;
+	cout<<"---------"<<endl;
+	cout<<arr[6]<<" | "<<arr[7] << " | "<< arr[8]<<endl<<endl;
 	
 	char ch = checkcondition();
 	if(ch == 'c')
