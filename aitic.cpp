@@ -61,7 +61,7 @@ int main()
 		}
 	}
 }
- 
+
 // This function returns true if there are moves
 // remaining on the board. It returns false if
 // there are no moves left to play.
@@ -72,9 +72,7 @@ bool isMovesLeft(char arr[9])
         	return true;
     return false;
 }
- 
-// This is the evaluation function as discussed
-// in the previous article ( http://goo.gl/sJgv68 )
+
 int evaluate(char b[9])
 {
     // Checking for Rows for X or O victory.
@@ -89,7 +87,7 @@ int evaluate(char b[9])
                 return -10;
         }
     }
- 
+
     // Checking for Columns for X or O victory.
     for (int col = 0; col<3; col++)
     {
@@ -98,12 +96,12 @@ int evaluate(char b[9])
         {
             if (b[0+col]==player)
                 return +10;
- 
+
             else if (b[0+col]==opponent)
                 return -10;
         }
     }
- 
+
     // Checking for Diagonals for X or O victory.
     if (b[0]==b[4] && b[4]==b[8])
     {
@@ -112,7 +110,7 @@ int evaluate(char b[9])
         else if (b[0]==opponent)
             return -10;
     }
- 
+
     if (b[2]==b[4] && b[4]==b[6])
     {
         if (b[2]==player)
@@ -120,38 +118,38 @@ int evaluate(char b[9])
         else if (b[2]==opponent)
             return -10;
     }
- 
+
     // Else if none of them have won then return 0
     return 0;
 }
- 
+
 // This is the minimax function. It considers all
 // the possible ways the game can go and returns
 // the value of the board
 int minimax(char board[9], int depth, bool isMax)
 {
     int score = evaluate(board);
- 
+
     // If Maximizer has won the game return his/her
     // evaluated score
     if (score == 10)
         return score;
- 
+
     // If Minimizer has won the game return his/her
     // evaluated score
     if (score == -10)
         return score;
- 
+
     // If there are no more moves and no winner then
     // it is a tie
     if (isMovesLeft(board)==false)
         return 0;
- 
+
     // If this maximizer's move
     if (isMax)
     {
         int best = -1000;
- 
+
         // Traverse all cells
         for (int i = 0; i<9; i++)
         {
@@ -165,19 +163,19 @@ int minimax(char board[9], int depth, bool isMax)
                     // the maximum value
                     best = max( best,
                         minimax(board, depth+1, !isMax) );
- 
+
                     // Undo the move
                     board[i] = '\0';
                 }
         }
         return best;
     }
- 
+
     // If this minimizer's move
     else
     {
         int best = 1000;
- 
+
         // Traverse all cells
         for (int i = 0; i<9; i++)
         {
@@ -186,12 +184,12 @@ int minimax(char board[9], int depth, bool isMax)
                 {
                     // Make the move
                     board[i] = opponent;
- 
+
                     // Call minimax recursively and choose
                     // the minimum value
                     best = min(best,
                            minimax(board, depth+1, !isMax));
- 
+
                     // Undo the move
                     board[i] = '\0';
                 }
@@ -199,13 +197,13 @@ int minimax(char board[9], int depth, bool isMax)
         return best;
     }
 }
- 
+
 // This will return the best possible move for the player
 int findBestMove(char board[9])
 {
     int bestVal = -1000;
     int bestMove = -1;
- 
+
     // Traverse all cells, evalutae minimax function for
     // all empty cells. And return the cell with optimal
     // value.
@@ -219,10 +217,10 @@ int findBestMove(char board[9])
                 // compute evaluation function for this
                 // move.
                 int moveVal = minimax(board, 0, false);
- 
+
                 // Undo the move
                 board[i] = '\0';
- 
+
                 // If the value of the current move is
                 // more than the best value, then update
 
@@ -257,7 +255,6 @@ void print(int place, char element)
 		cout<<"human wins";
 		exit(0);
 	}
-	
 }
 
 void tictactoe(int place, char element)
