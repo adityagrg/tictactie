@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
- 
+
 char player = 'O', opponent = 'X';
 
 void print(int place, char element);
